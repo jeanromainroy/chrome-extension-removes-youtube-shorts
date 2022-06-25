@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "Youtube Shorts Remover",
+    "version": "1.0",
+    "description": "Removes the button for Shorts",
+    "icons": {
+        "48": "assets/icon.png"
+    },
+    "browser_action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["build/background.js"],
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["build/injection.js"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ]
+}
