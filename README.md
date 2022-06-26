@@ -7,13 +7,7 @@ Youtube Shorts are an abomination, this extension removes the button.
 
 ## Installation
 
-1. In your chrome-based browser go to extensions,
-
-    chrome://extensions
-
-or
-
-    brave://extensions
+1. In your chrome-based browser go to extensions (e.g. chrome://extensions, brave://extensions)
 
 2. Click on "Load unpacked"
 
