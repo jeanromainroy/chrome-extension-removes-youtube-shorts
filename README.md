@@ -1,6 +1,6 @@
 # Youtube Shorts Remover
 
-Youtube Shorts are an abomination, this extension removes the button. 
+Youtube Shorts are an abomination, this extension removes them. 
 
 ![preview](./public/assets/preview.png)
 
