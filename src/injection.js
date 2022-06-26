@@ -1,57 +1,27 @@
 'use strict';
 
-// config
-const APP_NAME = 'Youtube Shorts';
-const SHORTS_ID = "Shorts";
-const parentLevel = 1;
+// import config
+import { APP_NAME, MSG_KEY_REMOVE_EL, MSG_KEY_CURRENT_URL } from './config.js';
 
-
-function removeShorts(){
-
-    // get url
-    const url = window.location.href;
-
-    // validate
-    if (!url.includes('youtube')) return;
-
-    // log
-    console.log(`Processing ${url}`);
-    
-    // get div element
-    const selector = document.querySelectorAll(`a[title="${SHORTS_ID}"]`);
-    const el = (selector === null || selector[0] === undefined || selector[0] === null) ? null : selector[0];
-
-    // validate
-    if (el === null) return;
-
-    // select parent
-    let parentEl = el;
-    for(let i=0 ; i<parentLevel ; i++){
-        parentEl = parentEl.parentElement;
-    }
-    parentEl.remove();
-}
+// import remover
+import remover from './remover.js';
 
 
 // message interface
 chrome.runtime.onMessage.addListener(async function(message, sender, sendResponse) {
         switch(message.type) {
-            case "currentPage":
+            case MSG_KEY_CURRENT_URL:
                 console.log(`${APP_NAME} - url requested`)
                 const url = window.location.href;
                 sendResponse(url);
                 break;
 
-            case "tabChange":
-                console.log(`${APP_NAME} - tab changed, scrolling & scraping stopped`)
-                break;
-
-            case "removeShorts":
+            case MSG_KEY_REMOVE_EL:
                 console.log(`${APP_NAME} - removing shorts`)
-                removeShorts();
+                remover();
 
             default:
-                console.error("Unrecognised message: ", message);
+                console.error(`${APP_NAME} - Unrecognised message: `, message.type);
         }
     }
 );

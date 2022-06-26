@@ -1,14 +1,18 @@
 <script>
+
+    // import config
+    import { APP_NAME } from './config.js';
+
 </script>
 
 
 <main>
     <div class="container">
-
-        <p class="title">Youtube Shorts</p>
-        <p class="subsubtitle">Removes the "shorts"</p>
+        <p class="title">{APP_NAME}</p>
         <br>
-
+        <div style="text-align: center; margin: 0px auto;">
+            <img alt="preview" src="assets/preview.png" width="200px" height="auto">
+        </div>
     </div>
 </main>
 
@@ -40,7 +44,6 @@
         margin: 0px;
         padding: 8px;
     }
-    
 
     .container {
         margin: 0px;
@@ -54,51 +57,18 @@
         padding: 0px;
     }
 
-    :global(.title) {
+    .title {
         text-align: left;
         color: var(--black-dark);
-        margin: 1.0em auto 0.25em;
+        margin: 0px;
         font-weight: var(--font-bold);
         font-size: var(--font-size-large);
         max-width: var(--max-width);
     }
 
-    :global(.subtitle) {
-        text-align: left;
-        color: var(--black-dark);
-        margin: 0.75em auto 0.5em;
-        font-weight: var(--font-bold);
-        font-size: var(--font-size-normal);
-        max-width: var(--max-width);
-    }
-
-    :global(.subsubtitle) {
-        text-align: left;
-        color: var(--black-dark);
-        margin: 1.0em auto -0.5em;
-        font-weight: var(--font-bold);
-        font-size: var(--font-size-small);
-        max-width: var(--max-width);
-    }
-
-    :global(.subsubsubtitle) {
-        text-align: left;
-        color: var(--black-dark);
-        margin: 1.0em auto -0.75em;
-        padding: 0px;
-        font-weight: var(--font-bold);
-        font-size: var(--font-size-very-small);
-        max-width: var(--max-width);
-    }
-
-    :global(.text) {
-        text-align: left;
-        color: var(--black);
-        margin: 0 auto;
-        padding: 0px;
-        font-weight: var(--font-normal);
-        font-size: var(--font-size-very-small);
-        max-width: var(--max-width);
+    img {
+        border: 1px solid black;
+        padding: 8px;
     }
 
 </style>
