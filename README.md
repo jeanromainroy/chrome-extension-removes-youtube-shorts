@@ -14,6 +14,20 @@ Youtube Shorts are an abomination, this extension removes the button.
 3. Select the public/ folder of this repository
 
 
+## Development
+
+Here are the two files where the removal happens, 
+
+1. [config](./src/config.js)
+
+2. [removal](./src/remover.js)
+
+
+To build run, 
+
+    ./build.sh
+
+
 ## Author
 
 * **Jean-Romain Roy** - *Principal Developer* - [jeanromainroy](https://github.com/jeanromainroy)
