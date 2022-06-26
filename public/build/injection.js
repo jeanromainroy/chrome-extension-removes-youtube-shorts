@@ -68,11 +68,17 @@
                     break;
 
                 case MSG_KEY_REMOVE_EL:
-                    console.log(`${APP_NAME} - removing shorts`);
+                    console.log(`${APP_NAME} - removing html elements`);
                     remove_html_elements();
+                    break;
 
                 default:
-                    console.error(`${APP_NAME} - Unrecognised message: `, message.type);
+                    if (message.type.trim() === MSG_KEY_REMOVE_EL) {
+                        console.log(`${APP_NAME} - fallback on remover`);
+                        remove_html_elements();
+                    } else {
+                        console.error(`${APP_NAME} - Unrecognised message: ${message.type}`);
+                    }
             }
         }
     );
