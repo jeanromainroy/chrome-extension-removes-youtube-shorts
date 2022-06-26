@@ -10,7 +10,9 @@
 
     // html elements to remove
     const HTML_ELEMENTS_TO_REMOVE = [
-        { "escalate": 1, "query": `a[title="Shorts"]`}
+        { "escalate": 1, "query": `a[title="Shorts"]`},
+        { "escalate": 1, "query": `a[title="Explore"]`},
+        { "escalate": 2, "query": `a[href*="/shorts/"]`}
     ];
 
     function is_youtube(){
@@ -37,11 +39,11 @@
             // log
             console.log(`${APP_NAME} - Selecting ${query}`);
 
-            // get div element
-            const selector = document.querySelectorAll(query);
+            // get html elements
+            const elements = document.querySelectorAll(query);
             
             // validate
-            if(selector === null || selector[0] === undefined || selector[0] === null) {
+            if(elements === undefined || elements === null) {
                 
                 // log
                 console.log(`${APP_NAME} - Failed to run ${query}`);
@@ -50,12 +52,35 @@
             }
 
             // escalate to parent
-            let parentEl = selector[0];
-            for(let i=0 ; i<escalate ; i++){
-                parentEl = parentEl.parentElement;
+            for (const element of elements) {
+                
+                // validate
+                if (element === undefined || element === null) continue;
+
+                // init parent
+                let patent_element = element;
+
+                // go through escalation levels
+                for(let i=0 ; i<escalate ; i++){
+                    patent_element = patent_element.parentElement;
+                }
+
+                // remove
+                patent_element.remove();
             }
-            parentEl.remove();
         });    
+    }
+
+
+    function run(){
+
+        // remove
+        remove_html_elements();
+
+        // in loop
+        setTimeout(() => {
+            run();
+        }, 5000);
     }
 
     // message interface
@@ -69,13 +94,13 @@
 
                 case MSG_KEY_REMOVE_EL:
                     console.log(`${APP_NAME} - removing html elements`);
-                    remove_html_elements();
+                    run();
                     break;
 
                 default:
                     if (message.type.trim() === MSG_KEY_REMOVE_EL) {
                         console.log(`${APP_NAME} - fallback on remover`);
-                        remove_html_elements();
+                        run();
                     } else {
                         console.error(`${APP_NAME} - Unrecognised message: ${message.type}`);
                     }

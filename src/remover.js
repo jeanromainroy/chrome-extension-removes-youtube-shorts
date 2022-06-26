@@ -14,7 +14,7 @@ function is_youtube(){
 }
 
 
-export default function remove_html_elements(){
+function remove_html_elements(){
 
     // check 
     if(!is_youtube()) return;
@@ -28,11 +28,11 @@ export default function remove_html_elements(){
         // log
         console.log(`${APP_NAME} - Selecting ${query}`)
 
-        // get div element
-        const selector = document.querySelectorAll(query);
+        // get html elements
+        const elements = document.querySelectorAll(query);
         
         // validate
-        if(selector === null || selector[0] === undefined || selector[0] === null) {
+        if(elements === undefined || elements === null) {
             
             // log
             console.log(`${APP_NAME} - Failed to run ${query}`);
@@ -41,10 +41,33 @@ export default function remove_html_elements(){
         }
 
         // escalate to parent
-        let parentEl = selector[0];
-        for(let i=0 ; i<escalate ; i++){
-            parentEl = parentEl.parentElement;
+        for (const element of elements) {
+            
+            // validate
+            if (element === undefined || element === null) continue;
+
+            // init parent
+            let patent_element = element;
+
+            // go through escalation levels
+            for(let i=0 ; i<escalate ; i++){
+                patent_element = patent_element.parentElement;
+            }
+
+            // remove
+            patent_element.remove();
         }
-        parentEl.remove();
     });    
+}
+
+
+export default function run(){
+
+    // remove
+    remove_html_elements();
+
+    // in loop
+    setTimeout(() => {
+        run();
+    }, 5000);
 }

@@ -9,5 +9,7 @@ export const MSG_KEY_CURRENT_URL = "currentUrl";
 
 // html elements to remove
 export const HTML_ELEMENTS_TO_REMOVE = [
-    { "escalate": 1, "query": `a[title="Shorts"]`}
+    { "escalate": 1, "query": `a[title="Shorts"]`},
+    { "escalate": 1, "query": `a[title="Explore"]`},
+    { "escalate": 2, "query": `a[href*="/shorts/"]`}
 ];
