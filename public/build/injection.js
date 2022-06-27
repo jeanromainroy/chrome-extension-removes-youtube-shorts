@@ -15,6 +15,9 @@
         { "escalate": 2, "query": `a[href*="/shorts/"]`}
     ];
 
+    // delay between shorts check
+    const SHORTS_CHECK_DELAY_MS = 3000;
+
     function is_youtube(){
 
         // get url
@@ -80,7 +83,7 @@
         // in loop
         setTimeout(() => {
             run();
-        }, 5000);
+        }, SHORTS_CHECK_DELAY_MS);
     }
 
     // message interface

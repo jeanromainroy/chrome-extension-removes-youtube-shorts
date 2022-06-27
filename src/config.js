@@ -13,3 +13,6 @@ export const HTML_ELEMENTS_TO_REMOVE = [
     { "escalate": 1, "query": `a[title="Explore"]`},
     { "escalate": 2, "query": `a[href*="/shorts/"]`}
 ];
+
+// delay between shorts check
+export const SHORTS_CHECK_DELAY_MS = 3000;

@@ -1,7 +1,7 @@
 'use strict';
 
 // import config
-import { APP_NAME, HTML_ELEMENTS_TO_REMOVE } from './config.js';
+import { APP_NAME, HTML_ELEMENTS_TO_REMOVE, SHORTS_CHECK_DELAY_MS } from './config.js';
 
 
 function is_youtube(){
@@ -69,5 +69,5 @@ export default function run(){
     // in loop
     setTimeout(() => {
         run();
-    }, 5000);
+    }, SHORTS_CHECK_DELAY_MS);
 }
